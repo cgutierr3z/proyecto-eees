@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eees',
+    'eees.apps.EeesConfig',
+    #'eees',
 ]
 
 #AUTH_USER_MODEL = 'eees.Usuario'
