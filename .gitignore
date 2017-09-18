@@ -1,6 +1,6 @@
 #ignorar
 #*.sqlite3
-#proyecto_eees/settings.py
+proyecto_eees/settings.py
 
 
 # Byte-compiled / optimized / DLL files
