@@ -20,6 +20,7 @@ ADMINS = (
     ('Carlos Gutierrez', 'cgutierr3z@utp.edu.co'),
 )
 
+AUTH_USER_MODEL = 'eees.Usuario'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'eees.apps.EeesConfig',
-    #'eees',
+    'widget_tweaks',
 ]
 
 #AUTH_USER_MODEL = 'eees.Usuario'
@@ -126,7 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
 
 #Configuraciones para enviar mensajes usando gmail
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
