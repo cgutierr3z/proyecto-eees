@@ -9,3 +9,4 @@ from .models import *
 
 admin.site.register(Departamento)
 admin.site.register(Municipio)
+admin.site.register(Colegio)
