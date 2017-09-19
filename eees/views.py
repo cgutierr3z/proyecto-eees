@@ -17,6 +17,7 @@ from django.core.urlresolvers import reverse
 
 #from .forms import *
 from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -27,7 +28,7 @@ def index(request):
 def login(request):
     guest = request.user.is_anonymous()
     if not guest:
-        return HttpResponse("sesion iniciada")
+        return HttpResponse("sesion iniciada 2 <a href=\"/salir\">salir</a>")
         #return HttpResponseRedirect('/cuenta')
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
@@ -41,24 +42,34 @@ def login(request):
                 usuario = Usuario.objects.filter(email=email)
                 acceso = authenticate(username=usuario[0].username, password=clave)
             else:
-                acceso = authenticate(username=None, password=None)
+                acceso = None
 
             if acceso is not None:
                 if acceso.is_active:
                     auth_login(request, acceso)
-                    return HttpResponse("sesion iniciada <a href=\"/salir\">salir</a>")
+                    return HttpResponse("sesion iniciada 1 <a href=\"/salir\">salir</a>")
                     #return HttpResponseRedirect('/cuenta')
                 else:
-                    return HttpResponse("usuario inactivo")
-                    #return render(request,'login_error.html')
+                    return HttpResponseRedirect('/#cuentaInactiva')
             else:
-                return render(request,'eees/login_error.html',{'form':form})
+                return HttpResponseRedirect('/acceso/#loginError')
+                #return render(request,'eees/login.html#loginError',{'form':form})
     else:
         form = AuthenticationForm()
     return render(request,'eees/login.html',{'form':form})
 
 
-@login_required(login_url='/acceder/')
+@login_required(login_url='/acceso/')
 def logout(request):
     auth_logout(request)
     return HttpResponseRedirect('/')
+
+def signup(request):
+    if request.method == 'POST':
+        form = FormRegistro(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/#registroExitoso')
+    else:
+        form = FormRegistro()
+    return render(request, 'eees/signup.html', {'form': form})

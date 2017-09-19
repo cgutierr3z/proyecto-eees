@@ -31,7 +31,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">EEEScolar</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          EEEScolar</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -39,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#top">top</a>
+              <a class="nav-link js-scroll-trigger" href="#top">inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">Sobre nosotros</a>
@@ -48,7 +50,16 @@
               <a class="nav-link js-scroll-trigger" href="#footer">m&aacute;s info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'eees:login' %}">login</a>
+              <span>|</span>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-primary" href="{% url 'eees:signup' %}">registro</a>
+            </li>
+            <li class="nav-item">
+              <span>|</span>
+            </li>
+            <li class="nav-item">
+              <a class=" js-scroll-trigger btn btn-outline-info" href="{% url 'eees:login' %}">entrar</a>
             </li>
           </ul>
         </div>
@@ -86,7 +97,7 @@
           </p>
           </div>
           <div class="col-lg-8 mx-auto text-center">
-            <a href="#" class="btn btn-lg btn-outline">
+            <a href="{% url 'eees:signup' %}" class="btn btn-lg btn-outline-primary">
               <i class="fa fa-sign-in"></i>
               Registrate!
             </a>
@@ -233,6 +244,76 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static 'eees/js/freelancer.min.js' %}"></script>
+
+    <!-- Modal #registroExitoso -->
+    <div class="modal fade" id="registroExitoso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Notificaci&oacute;n:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Registro existoso!</h4>
+              <p>
+                Su cuenta ha sido solicitada, satisfactoriamente.
+              </p>
+              <hr>
+              <p class="mb-0">
+                Debe ser activada por un <b>Administrador</b> antes de que pueda
+                iniciar sesi&oacute;n.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="/" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal #cuentaInactiva -->
+    <div class="modal fade" id="cuentaInactiva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Notificaci&oacute;n:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-warning" role="alert">
+              <h4 class="alert-heading">Cuenta inactiva!</h4>
+              <p>
+                Su cuenta no se encuentra activa actualmente.
+              </p>
+              <hr>
+              <p class="mb-0">
+                Debe ser activada por un <b>Administrador</b> antes de que pueda
+                iniciar sesi&oacute;n.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="/" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //shortcut for $(document).ready
+      $(function(){
+          if(window.location.hash) {
+              var hash = window.location.hash;
+              $(hash).modal('toggle');
+          }
+      });
+    </script>
 
   </body>
 
