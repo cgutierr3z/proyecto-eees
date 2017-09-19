@@ -44,22 +44,18 @@
               <a class="nav-link js-scroll-trigger" href="#top">inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Sobre nosotros</a>
+              <a class="nav-link js-scroll-trigger" href="#about">Sobre el proyecto</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#footer">m&aacute;s info</a>
             </li>
+
             <li class="nav-item">
-              <span>|</span>
+              <a style="margin:0px 0px 5px 5px" class="btn btn-outline-primary" href="{% url 'eees:signup' %}">registro</a>
             </li>
+
             <li class="nav-item">
-              <a class="btn btn-outline-primary" href="{% url 'eees:signup' %}">registro</a>
-            </li>
-            <li class="nav-item">
-              <span>|</span>
-            </li>
-            <li class="nav-item">
-              <a class=" js-scroll-trigger btn btn-outline-info" href="{% url 'eees:login' %}">entrar</a>
+              <a style="margin:0px 0px 5px 5px"  class="btn btn-outline-info" href="{% url 'eees:login' %}">entrar</a>
             </li>
           </ul>
         </div>
@@ -73,7 +69,7 @@
         <div class="intro-text">
           <span class="name">EEEScolar</span>
           <hr class="star-light">
-          <span class="skills">Plataforma para Examenes y Encuestas Escolares</span>
+          <span class="skills">Plataforma para Ex&aacute;menes y Encuestas Escolares</span>
         </div>
       </div>
     </header>
@@ -81,7 +77,7 @@
     <!-- About Section -->
     <section  id="about">
       <div class="container">
-        <h2 class="text-center">Sobre nosotros</h2>
+        <h2 class="text-center">EE<i class="fa fa-pencil-square-o" aria-hidden="true"></i>ES</h2>
         <hr class="star-primary">
         <div class="row">
           <div class="col-lg-4 ml-auto">
@@ -91,9 +87,9 @@
           </div>
           <div class="col-lg-4 mr-auto">
             <p>Nuestro objetivo es agilizar y mejorar el proceso de
-            evaluacion del conocimiento mediante el uso de tecnoligias de la
-            informacion y la comunicacion, tanto en dispositivos moviles como
-            de escritorio.
+            evaluacion del conocimiento mediante el uso de tecnolog&iacute;as de la
+            informaci&oacute;n y la comunicaci&oacute;n, tanto en dispositivos
+            m&oacute;viles como de escritorio.
           </p>
           </div>
           <div class="col-lg-8 mx-auto text-center">
@@ -108,25 +104,32 @@
 
     <!-- Portfolio Grid Section -->
     <section class="success" id="portfolio">
-      <div class="container">
+      <div class="container text-center">
         <h2 class="text-center">Proyecto</h2>
         <hr class="star-light">
         <div class="row">
-        <div class="col-lg-4">
-          <h4>Heading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+        <div class="col-md-4">
+            <span class="fa-stack fa-3x">
+              <i class="fa fa-laptop fa-2x fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4>Responsive Design</h4>
+            <p>Diseñado para se adaptable a todo los dispositivos.</p>
         </div>
-        <div class="col-lg-4">
-          <h4>Heading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
+        <div class="col-md-4">
+            <span class="fa-stack fa-3x">
+              <i class="fa fa-2x fa-paper-plane fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4>Ready to Ship</h4>
+            <p>Facil e intuitivo de usar.</p>
         </div>
-        <div class="col-lg-4">
-          <h4>Heading</h4>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
-        </div>
+        <div class="col-md-4">
+          <span class="fa-stack fa-3x">
+            <i class="fa fa-2x fa-unlock fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4>Open Source</h4>
+          <p>Proyecto construido bajo licencia
+            <a class="btn btn-primary" href="https://github.com/cgutierr3z/proyecto-eees/blob/master/LICENSE">MIT</a></p>
+      </div>
       </div>
       </div>
     </section>
@@ -189,7 +192,7 @@
 
             <div class="footer-col col-md-4">
               <h3>Ubicaci&oacute;n</h3>
-              <p>Universidad Tecnologica de Pereira
+              <p>Universidad Tecnol&oacute;gica de Pereira
                 <br>Pereira, Risaralda</p>
             </div>
 
@@ -197,7 +200,7 @@
               <h3>Encuentranos</h3>
               <ul class="list-inline">
                 <li class="list-inline-item">
-                  <a class="btn-social btn-outline" href="#">
+                  <a class="btn-social btn-outline" href="https://github.com/cgutierr3z/proyecto-eees">
                     <i class="fa fa-fw fa-github "></i>
                   </a>
                 </li>
@@ -206,7 +209,7 @@
 
             <div class="footer-col col-md-4">
               <h3>Sobre EEES</h3>
-              <p>Plataforma para Examenes y Encuestas Escolares creada por
+              <p>Plataforma para Ex&aacute;menes y Encuestas Escolares creada por
                 <a href="http://github.com/cgutierr3z">@cgutierr3z</a>.</p>
             </div>
           </div>
