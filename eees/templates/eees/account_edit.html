@@ -1,0 +1,30 @@
+{% extends 'eees/blank.html' %}
+
+{% block titulo %}
+	Editar Mi Cuenta
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block style_css %}
+{% endblock %}
+
+{% block header %}
+  Editar Detalles de Mi Cuenta
+{% endblock %}
+
+{% block contenido %}
+<form id='formulario' method='post' action=''>
+  {% csrf_token %}
+  <table>{{form}}</table>
+  <p>
+    <input class="btn btn-primary" type='submit' value='Guardar'/>
+    <a class="btn btn-default" href="{% url 'eees:account_edit_pwd' user.id %}">Cambiar contrase&ntilde;a</a>
+		<a class="btn btn-link" href="{% url 'eees:account'%}">Volver</a>
+
+  </p>
+</form>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

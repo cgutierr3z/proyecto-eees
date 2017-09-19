@@ -22,14 +22,21 @@ from .forms import *
 # Create your views here.
 
 def index(request):
-    return render(request, 'eees/index.html')
+    guest = request.user.is_anonymous()
+    if not guest:
+        #reverse('eees:account')
+        #return HttpResponse("sesion iniciada 2 <a href=\"/salir\">salir</a>")
+        return HttpResponseRedirect('/cuenta')
+    else:
+        return render(request, 'eees/index.html')
     #return HttpResponse("Hello, world. You're at the index.")
 
 def login(request):
     guest = request.user.is_anonymous()
     if not guest:
-        return HttpResponse("sesion iniciada 2 <a href=\"/salir\">salir</a>")
-        #return HttpResponseRedirect('/cuenta')
+        #reverse('eees:account')
+        #return HttpResponse("sesion iniciada 2 <a href=\"/salir\">salir</a>")
+        return HttpResponseRedirect('/cuenta')
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         if form.is_valid:
@@ -47,8 +54,9 @@ def login(request):
             if acceso is not None:
                 if acceso.is_active:
                     auth_login(request, acceso)
-                    return HttpResponse("sesion iniciada 1 <a href=\"/salir\">salir</a>")
-                    #return HttpResponseRedirect('/cuenta')
+                    #reverse('eees:account')
+                    #return HttpResponse("sesion iniciada 1 <a href=\"/salir\">salir</a>")
+                    return HttpResponseRedirect('/cuenta')
                 else:
                     return HttpResponseRedirect('/#cuentaInactiva')
             else:
@@ -65,6 +73,11 @@ def logout(request):
     return HttpResponseRedirect('/')
 
 def signup(request):
+    guest = request.user.is_anonymous()
+    if not guest:
+        #reverse('eees:account')
+        #return HttpResponse("sesion iniciada 2 <a href=\"/salir\">salir</a>")
+        return HttpResponseRedirect('/cuenta/')
     if request.method == 'POST':
         form = FormRegistro(request.POST)
         if form.is_valid():
@@ -89,3 +102,44 @@ def password_reset__confirm(request, uidb64=None, token=None):
 
 def password_reset__complete(request):
     return HttpResponseRedirect('/acceso/#passwordDone')
+
+
+@login_required(login_url='/acceso/')
+def account(request):
+    user = request.user
+    user = get_object_or_404(Usuario, pk=user.id)
+    if user.is_estud:
+        user = get_object_or_404(Estudiante, pk=user.id)
+    if user.is_profe:
+        user = get_object_or_404(Profesor, pk=user.id)
+    return  render(request,'eees/account.html', {'user':user})
+
+@login_required(login_url='/acceso/')
+def account_edit(request, user_id):
+    user = get_object_or_404(Usuario, pk=user_id)
+    if user.is_estud:
+        user = get_object_or_404(Estudiante, pk=user_id)
+    if user.is_profe:
+        user = get_object_or_404(Profesor, pk=user_id)
+    if request.method=='POST':
+        form = FormEditarCuenta(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/cuenta/')
+    else:
+        form = FormEditarCuenta(instance=user)
+    return render(request, 'eees/account_edit.html', {'form':form,'user':user})
+
+@login_required(login_url='/acceso/')
+def account_edit_pwd(request, user_id):
+    user = get_object_or_404(Usuario, pk=user_id)
+
+    form = PasswordChangeForm(user)
+    if request.method=='POST':
+        form = PasswordChangeForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return HttpResponseRedirect('/cuenta/')
+
+    return render(request, 'eees/account_edit_pwd.html', {'form':form})

@@ -42,3 +42,41 @@ class FormRegistro(UserCreationForm):
             user.is_active = False
             user.save()
         return user
+
+class FormEditarCuenta(UserChangeForm):
+    fecha_nac   = forms.DateField(label='Fecha nacimiento',widget=forms.SelectDateWidget(years=[y for y in range(1990,2017)]),required=True)
+    password = ReadOnlyPasswordHashField()
+
+    class Meta:
+        model = Estudiante
+        fields = ('username','email','first_name','last_name','tipo_docto','no_docto','fecha_nac','genero','departamento','municipio','password')
+
+    def __init__(self, *args, **kwargs):
+        super(FormEditarCuenta, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+        if instance and instance.id:
+            self.fields['username'].required = False
+            self.fields['username'].widget.attrs['disabled'] = 'disabled'
+            self.fields['username'].widget = forms.HiddenInput()
+
+    def clean_username(self):
+        instance = getattr(self, 'instance', None)
+        if instance:
+            try:
+                self.changed_data.remove('username')
+            except ValueError, e:
+                pass
+            return instance.username
+        else:
+            return self.cleaned_data.get('username', None)
+
+    def clean_password(self):
+        instance = getattr(self, 'instance', None)
+        if instance:
+            try:
+                self.changed_data.remove('password')
+            except ValueError, e:
+                pass
+            return instance.password
+        else:
+            return self.cleaned_data.get('password', None)

@@ -176,4 +176,6 @@ class Estudiante(Usuario):
 
     #user        = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     #active      = models.BooleanField(default=True)
-    grupo       = models.ForeignKey(Grupo, on_delete=models.CASCADE)
+    departamento        = models.ForeignKey(Departamento, on_delete=models.PROTECT, null=True, blank=True)
+    municipio           = models.ForeignKey(Municipio, on_delete=models.PROTECT, null=True, blank=True)
+    grupo               = models.ForeignKey(Grupo, on_delete=models.CASCADE)

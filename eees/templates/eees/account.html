@@ -1,0 +1,65 @@
+{% extends 'eees/blank.html' %}
+
+{% block titulo %}
+	Mi Cuenta
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block style_css %}
+{% endblock %}
+
+{% block header %}
+  Mi Cuenta - Detalles
+  <a class="btn btn-primary" href="{% url 'eees:account_edit' user.id %}">Editar informaci&oacute;n personal</a>
+
+{% endblock %}
+
+{% block contenido %}
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td><b>Nombres:</b></td>
+        <td>{{user.first_name|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>Apellidos:</b></td>
+        <td>{{user.last_name|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>Tipo documento:</b></td>
+        <td>{{user.tipo_docto|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>No. documento:</b></td>
+        <td>{{user.no_docto|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>Fecha nacimiento:</b></td>
+        <td>{{user.fecha_nac}}</td>
+      </tr>
+      <tr>
+        <td><b>Genero:</b></td>
+        <td>{{user.genero|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>Departamento</b></td>
+        <td>{{user.departamento|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>Municipio:</b></td>
+        <td>{{user.municipio|upper}}</td>
+      </tr>
+      <tr>
+        <td><b>E-mail:</b></td>
+        <td>{{user.email|upper}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

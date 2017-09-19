@@ -1,0 +1,29 @@
+{% extends 'eees/blank.html' %}
+
+{% block titulo %}
+	Editar Contrase&ntilde;a
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block style_css %}
+{% endblock %}
+
+{% block header %}
+  Editar Contrase&ntilde;a
+{% endblock %}
+
+{% block contenido %}
+<form id='formulario' method='post' action=''>
+  {% csrf_token %}
+  <table>{{form}}</table>
+  <p>
+    <input class="btn btn-primary" type='submit' value='Guardar'/>
+    <a class="btn btn-link" href="{% url 'eees:account'%}">Volver</a>
+
+  </p>
+</form>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
