@@ -14,9 +14,17 @@ class Departamento(models.Model):
         verbose_name_plural = "Departamentos"
 
     departamento    = models.CharField(max_length=200)
+    is_active       = models.BooleanField('Activar', default=True)
+
 
     def __str__(self):
         return self.departamento
+
+    def desactivar(self):
+        self.is_active = False
+
+    def activar(self):
+        self.is_active = True
 
 #Modelo Municipios
 class Municipio(models.Model):
@@ -26,9 +34,17 @@ class Municipio(models.Model):
 
     departamento    = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     municipio       = models.CharField(max_length=200)
+    is_active       = models.BooleanField('Activar', default=True)
+
 
     def __str__(self):
         return str(self.departamento) +str(' - ')+ str(self.municipio)
+
+    def desactivar(self):
+        self.is_active = False
+
+    def activar(self):
+        self.is_active = True
 
 #Modelo de Colegio
 class Colegio(models.Model):
@@ -37,12 +53,11 @@ class Colegio(models.Model):
         verbose_name_plural = "Colegios"
 
     nombre          = models.CharField(max_length=200)
-    departamento    = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     municipio       = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     is_active       = models.BooleanField('Activar', default=True)
 
     def __str__(self):
-        return self.nombre
+        return str(self.municipio) +str(' - ')+ str(self.nombre)
 
     def desactivar(self):
         self.is_active = False
@@ -50,7 +65,7 @@ class Colegio(models.Model):
     def activar(self):
         self.is_active = True
 
-#modelo de usuarios
+#Modelo de usuarios
 class Usuario(AbstractUser):
     class Meta:
         db_table = 'auth_user'
@@ -78,11 +93,87 @@ class Usuario(AbstractUser):
     no_docto            = models.CharField('Numero documento',max_length=20)
     fecha_nac           = models.DateField('Fecha nacimiento',null=True)
     genero              = models.CharField('Genero',max_length=20,choices=GENERO_LIST)
-    direccion           = models.CharField('Direccion',max_length=100)
-    telefono            = models.CharField('Telefono',max_length=15)
+    manejodatos         = models.BooleanField('Manejo datos',default=False)
 
     def desactivar(self):
         self.is_active = False
 
     def activar(self):
         self.is_active = True
+
+class Administrador(Usuario):
+    class Meta:
+        verbose_name = "Administrador"
+        verbose_name_plural = "Administradores"
+
+    departamento        = models.ForeignKey(Departamento, on_delete=models.PROTECT, null=True, blank=True)
+    municipio           = models.ForeignKey(Municipio, on_delete=models.PROTECT, null=True, blank=True)
+
+
+class Profesor(Usuario):
+    class Meta:
+        verbose_name = "Profesor"
+        verbose_name_plural = "Profesores"
+
+    departamento        = models.ForeignKey(Departamento, on_delete=models.PROTECT, null=True, blank=True)
+    municipio           = models.ForeignKey(Municipio, on_delete=models.PROTECT, null=True, blank=True)
+
+
+#Modelo de grupos
+class Grupo(models.Model):
+    class Meta:
+        verbose_name = "Grupo"
+        verbose_name_plural = "Grupos"
+
+    JORNADA_LIST = [
+        ('MANANA', 'MANANA'),
+        ('TARDE', 'TARDE'),
+        ('UNICA', 'UNICA'),
+        ('NOCTURNA', 'NOCTURNA'),
+        ('SABATINA', 'SABATINA'),
+    ]
+    GRADOS_LIST = [
+        ('PRIMARIA',(
+                ('0','CERO'),
+                ('1','PRIMERO'),
+                ('2','SEGUNDO'),
+                ('3','TERCERO'),
+                ('4','CUARTO'),
+                ('5','QUINTO'),
+            )
+        ),
+        ('SECUNDARIA',(
+                ('6','SEXTO'),
+                ('7','SEPTIMO'),
+                ('8','OCTAVO'),
+                ('9','NOVENO'),
+                ('10','DECIMO'),
+                ('11','UNDECIMO'),
+            )
+        ),
+    ]
+    colegio     = models.ForeignKey(Colegio, on_delete=models.CASCADE)
+    jornada     = models.CharField(max_length=200,choices=JORNADA_LIST)
+    grado       = models.CharField(max_length=200,choices=GRADOS_LIST)
+    nombre      = models.CharField(max_length=200)
+    profesor    = models.ForeignKey(Profesor, on_delete=models.PROTECT, null=True, blank=True)
+    is_active   = models.BooleanField('Activar',default=True)
+
+
+    def __str__(self):
+        return str(self.colegio) +str(' - ')+ str(self.nombre)
+
+    def desactivar(self):
+        self.is_active = False
+
+    def activar(self):
+        self.is_active = True
+
+class Estudiante(Usuario):
+    class Meta:
+        verbose_name = "Estudiante"
+        verbose_name_plural = "Estudiantes"
+
+    #user        = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    #active      = models.BooleanField(default=True)
+    grupo       = models.ForeignKey(Grupo, on_delete=models.CASCADE)
