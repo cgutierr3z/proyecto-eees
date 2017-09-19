@@ -10,4 +10,8 @@ from .models import *
 admin.site.register(Departamento)
 admin.site.register(Municipio)
 admin.site.register(Colegio)
+admin.site.register(Grupo)
 admin.site.register(Usuario)
+admin.site.register(Administrador)
+admin.site.register(Profesor)
+admin.site.register(Estudiante)
