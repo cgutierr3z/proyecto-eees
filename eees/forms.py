@@ -40,6 +40,7 @@ class FormRegistro(UserCreationForm):
         user.email = self.cleaned_data['email']
         if commit:
             user.is_active = False
+            user.is_estud = True
             user.save()
         return user
 
