@@ -73,3 +73,19 @@ def signup(request):
     else:
         form = FormRegistro()
     return render(request, 'eees/signup.html', {'form': form})
+
+def password_reset__form(request):
+    return password_reset(request, template_name='eees/password_reset_form.html',
+        email_template_name='eees/password_reset_email.html',
+        subject_template_name='eees/password_reset_subject.txt',
+        post_reset_redirect=reverse('eees:password_reset__done'))
+
+def password_reset__done(request):
+    return HttpResponseRedirect('/acceso/#passwordMail')
+
+def password_reset__confirm(request, uidb64=None, token=None):
+    return password_reset_confirm(request, template_name='eees/password_reset_confirm.html',
+        uidb64=uidb64, token=token, post_reset_redirect=reverse('eees:password_reset__complete'))
+
+def password_reset__complete(request):
+    return HttpResponseRedirect('/acceso/#passwordDone')

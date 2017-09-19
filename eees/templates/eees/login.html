@@ -76,7 +76,7 @@
 		                                <!-- Change this to a button or input when using this as a form -->
 		                                <input class="btn btn-lg btn-success btn-block" type='submit' value='Ingresar'>
 																		<p style="text-align:center">
-																			<a class="btn btn-link" href="#">¿Olvidaste la contrase&ntilde;a?</a>
+																			<a class="btn btn-link" href="{% url 'eees:password_reset__form' %}">¿Olvidaste la contrase&ntilde;a?</a>
 
 																			<a class="btn btn-link" href="{% url 'eees:signup' %}">Registrarse</a>
 																		</p>
@@ -120,6 +120,66 @@
 			</div>
 		</div>
 
+		<!-- Modal #passwordMail -->
+		<div class="modal fade" id="passwordMail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Notificaci&oacute;n:</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="panel panel-green">
+							<div class="panel-heading">
+								 <b>RESTABLECER CONTRASEÑA</b>
+							</div>
+							<div class="panel-body">
+									<p>Se ha enviado un mensaje con un <b>link</b> para restablecer
+									la contrase&ntilde;a al correo del usuario.</p>
+							</div>
+							<div class="panel-footer">
+									Por favor, confirme.
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a href="/" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal #passwordDone -->
+		<div class="modal fade" id="passwordDone" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Notificaci&oacute;n:</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="panel panel-green">
+							<div class="panel-heading">
+								 <b>SE HA RESTABLECIDO LA CONTRASEÑA</b>
+							</div>
+							<div class="panel-body">
+									<p>La contrase&ntilde;a ha sido restablecida.</p>
+							</div>
+							<div class="panel-footer">
+									Ya puede iniciar sesi&oacute;n.
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a href="/" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 {% endblock %}
 
