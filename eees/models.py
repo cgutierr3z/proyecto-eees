@@ -13,8 +13,8 @@ class Departamento(models.Model):
         verbose_name = "Departamento"
         verbose_name_plural = "Departamentos"
 
-    departamento    = models.CharField(max_length=200)
-    is_active       = models.BooleanField('Activar', default=True)
+    departamento    = models.CharField(max_length=200, unique=True, null=False)
+    is_active       = models.BooleanField('Activo', default=True)
 
 
     def __str__(self):
@@ -33,18 +33,19 @@ class Municipio(models.Model):
         verbose_name_plural = "Municipios"
 
     departamento    = models.ForeignKey(Departamento, on_delete=models.CASCADE)
-    municipio       = models.CharField(max_length=200)
-    is_active       = models.BooleanField('Activar', default=True)
-
+    municipio       = models.CharField(max_length=200,unique=True, null=False)
+    is_active       = models.BooleanField('Activo', default=True)
 
     def __str__(self):
         return str(self.departamento) +str(' - ')+ str(self.municipio)
 
     def desactivar(self):
         self.is_active = False
+        return self
 
     def activar(self):
         self.is_active = True
+        return self
 
 #Modelo de Colegio
 class Colegio(models.Model):
@@ -52,7 +53,7 @@ class Colegio(models.Model):
         verbose_name = "Colegio"
         verbose_name_plural = "Colegios"
 
-    nombre          = models.CharField(max_length=200)
+    nombre          = models.CharField(max_length=200,  unique=True, null=False)
     municipio       = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     is_active       = models.BooleanField('Activar', default=True)
 

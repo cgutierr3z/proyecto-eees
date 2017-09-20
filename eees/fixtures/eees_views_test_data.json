@@ -1,0 +1,286 @@
+[
+{
+    "model": "eees.departamento",
+    "pk": 1,
+    "fields": {
+        "departamento": "Risaralda",
+        "is_active": true
+    }
+},
+{
+    "model": "eees.departamento",
+    "pk": 2,
+    "fields": {
+        "departamento": "Caldas",
+        "is_active": false
+    }
+},
+{
+    "model": "eees.municipio",
+    "pk": 1,
+    "fields": {
+        "departamento": 1,
+        "municipio": "Dosquebradas",
+        "is_active": true
+    }
+},
+{
+    "model": "eees.municipio",
+    "pk": 2,
+    "fields": {
+        "departamento": 1,
+        "municipio": "Pereira",
+        "is_active": true
+    }
+},
+{
+    "model": "eees.municipio",
+    "pk": 3,
+    "fields": {
+        "departamento": 2,
+        "municipio": "Manizales",
+        "is_active": true
+    }
+},
+{
+    "model": "eees.colegio",
+    "pk": 1,
+    "fields": {
+        "nombre": "INEM Felipe Perez",
+        "municipio": 2,
+        "is_active": true
+    }
+},
+{
+    "model": "eees.colegio",
+    "pk": 2,
+    "fields": {
+        "nombre": "Instituro Tecnico Superior",
+        "municipio": 2,
+        "is_active": true
+    }
+},
+{
+    "model": "eees.usuario",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$ytA6wHXSg2xP$ZZ4pBoXYwD2Vra4w8i7mEl/ay0yQNnFGYGNxV0TY1yk=",
+        "last_login": "2017-09-19T21:56:06.433Z",
+        "is_superuser": true,
+        "username": "erre",
+        "first_name": "Carlos",
+        "last_name": "Gutierrez",
+        "email": "rapsta93@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-09-18T19:57:20.384Z",
+        "is_admin": false,
+        "is_profe": false,
+        "is_estud": false,
+        "tipo_docto": "CEDULA CUIDADANIA",
+        "no_docto": "1088307029",
+        "fecha_nac": "1990-01-01",
+        "genero": "HETEROSEXUAL",
+        "manejodatos": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.usuario",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$BqiyA1bl4zCs$i1JF19497WX91nvzHk4i9svBPnBMr9GSRWhe7ysM4uE=",
+        "last_login": "2017-09-19T22:20:17.002Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "test",
+        "last_name": "test",
+        "email": "cgutierrez@utp.edu.co",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-09-18T21:57:28Z",
+        "is_admin": false,
+        "is_profe": false,
+        "is_estud": true,
+        "tipo_docto": "CEDULA CUIDADANIA",
+        "no_docto": "123456",
+        "fecha_nac": "1990-01-01",
+        "genero": "HETEROSEXUAL",
+        "manejodatos": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.usuario",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$3MFZbMgXG1XO$qjn4Hz8ri3MHPCmkodK0yUQZ3hyCeX5osOlTqZWkATU=",
+        "last_login": "2017-09-19T22:19:40Z",
+        "is_superuser": false,
+        "username": "t2",
+        "first_name": "t2",
+        "last_name": "t2",
+        "email": "carlos_dkmc_93@hotmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-09-19T01:59:39Z",
+        "is_admin": false,
+        "is_profe": false,
+        "is_estud": true,
+        "tipo_docto": "CEDULA CUIDADANIA",
+        "no_docto": "13456",
+        "fecha_nac": "1990-01-01",
+        "genero": "HETEROSEXUAL",
+        "manejodatos": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.usuario",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$34mM4R4PbSa6$cTPpHf/R+edv9kPF/u3CQnl4gQuaoI7VumtKZsji/pg=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "t3",
+        "first_name": "t3",
+        "last_name": "t3",
+        "email": "t3@ee.es",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2017-09-19T02:37:04Z",
+        "is_admin": false,
+        "is_profe": false,
+        "is_estud": false,
+        "tipo_docto": "CEDULA CUIDADANIA",
+        "no_docto": "12345678",
+        "fecha_nac": "1990-01-01",
+        "genero": "HETEROSEXUAL",
+        "manejodatos": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.usuario",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$qx1d2LsfX7aL$bCWcDkTCyv1koIg7HmarWVCrUngq2Ik1TyQvc0uRVx4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "t4",
+        "first_name": "t4",
+        "last_name": "t4",
+        "email": "t4@ee.es",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2017-09-19T02:45:15.904Z",
+        "is_admin": false,
+        "is_profe": false,
+        "is_estud": false,
+        "tipo_docto": "CEDULA CUIDADANIA",
+        "no_docto": "1342657589",
+        "fecha_nac": "1990-01-01",
+        "genero": "HETEROSEXUAL",
+        "manejodatos": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.usuario",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$WLEekx27QoRK$QbJDRu744sSbI5M+5Q3VwZo9MN4gokbpaFym323nzj4=",
+        "last_login": "2017-09-19T22:22:49.448Z",
+        "is_superuser": false,
+        "username": "tt",
+        "first_name": "tt",
+        "last_name": "tt",
+        "email": "tt@ee.es",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-09-19T22:22:23Z",
+        "is_admin": false,
+        "is_profe": false,
+        "is_estud": true,
+        "tipo_docto": "CEDULA CUIDADANIA",
+        "no_docto": "12345657",
+        "fecha_nac": "1990-01-01",
+        "genero": "HETEROSEXUAL",
+        "manejodatos": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.grupo",
+    "pk": 1,
+    "fields": {
+        "colegio": 1,
+        "jornada": "TARDE",
+        "grado": "11",
+        "nombre": "11-15",
+        "profesor": null,
+        "is_active": true
+    }
+},
+{
+    "model": "eees.estudiante",
+    "pk": 2,
+    "fields": {
+        "departamento": 2,
+        "municipio": 2,
+        "grupo": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.estudiante",
+    "pk": 7,
+    "fields": {
+        "departamento": null,
+        "municipio": 1,
+        "grupo": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.estudiante",
+    "pk": 8,
+    "fields": {
+        "departamento": null,
+        "municipio": null,
+        "grupo": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.estudiante",
+    "pk": 9,
+    "fields": {
+        "departamento": null,
+        "municipio": null,
+        "grupo": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "eees.estudiante",
+    "pk": 10,
+    "fields": {
+        "departamento": 2,
+        "municipio": 3,
+        "grupo": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
